@@ -1,0 +1,186 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.message-container div{
+  flex-direction: row;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.quick-replies {
+  display: grid;
+  justify-content: left;
+  text-align: left;
+}
+.quick-replies button {
+  text-align: left;
+  background: #fff;
+  color: #661c69;
+  font: normal normal bold 14px/17px Arial;
+  font-weight: bold;
+  width: auto;
+  height: auto;
+  border: 1px solid #661c69;
+  border-radius: 4px;
+  opacity: 1;
+  margin: 0;
+  margin-bottom: 4px;
+  padding: 8px 10px;
+}
+
+.text-area {
+  height:18px;
+  -webkit-appearance: none;
+  border: 0;
+  resize: none;
+  background-color: #ffffff;
+  line-height: 1.5em;
+  min-width: 0;
+  width: 100%;
+  font-size: 1em;
+  overflow: hidden;
+  margin: 8px 0;
+  font: normal normal normal 16px/18px Arial;
+  letter-spacing: 0;
+  color: #333333;
+  opacity: 1;
+}
+
+textarea:focus {
+  outline: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.options-btn {
+  text-align: left;
+  background: #fff;
+  color: #661c69;
+  font: normal normal bold 14px/17px Arial;
+  font-weight: bold;
+  width: 100%;
+  height: auto;
+  border: 1px solid #661c69;
+  border-radius: 4px;
+  opacity: 1;
+  margin-bottom: 4px;
+  padding: 8px 10px;
+}
+.dot {
+  height: 8px;
+  width: 8px;
+  background-color: #F5821F;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px 3px;
+}
+.svg-custom g {
+  stroke: #fff;
+}
+.bot-message {
+  padding: 10px 13px 9px 10px !important;
+}
+.user-message {
+  padding: 10px 12px 9px 15px !important;
+}
+
+.loader {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.circle {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 2px;
+  animation: bounceAnimation 1s infinite ease-in-out;
+}
+
+.circle1 {
+  background-color: #ff659b;
+  animation-delay: 0.2s;
+}
+
+.circle2 {
+  background-color: #52e3ff;
+  animation-delay: 0.3s;
+}
+
+.circle3 {
+  background-color: #67dd86;
+  animation-delay: 0.4s;
+}
+
+.circle4 {
+  background-color: #a3a3a3;
+  animation-delay: 0.5s;
+}
+
+@keyframes bounceAnimation {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.main-wrapper {
+  display: flex !important;
+  width: 429px !important;
+  height: 95vh !important;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  box-shadow: none;
+}
+.main-wrapper-minimize {
+  /* width: 107px !important; */
+  height: 67px !important;
+}
+.main-container {
+  display: flex;
+  flex-direction: inherit;
+  width: 100%;
+  height: 95vh;
+  border-radius: 20px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(70, 70, 70, 0.27);
+  opacity: 1;
+  place-self: flex-end;
+}
+.main-container > div {
+  align-items: center;
+}
