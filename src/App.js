@@ -257,7 +257,7 @@ class App extends React.Component {
     let mesg = {};
     try {
       const response = await axios.post(
-        "https://3.91.69.147:5003/web-bot-proxy/get-answer",
+        "http://3.91.69.147:5003/api/get-answer",
         {
           question: inputMessage
         },
