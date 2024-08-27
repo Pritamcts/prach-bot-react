@@ -86,8 +86,10 @@ const Maximized = ({
     if (messages.length === 0) {
       handleMessage(
         {
-          text: `Hello! I am Autism Chatbot. I'm constantly learning about you to offer you the best service. How can I help you today?`,
-          value: `Hello! I am Autism Chatbot. I'm constantly learning about you to offer you the best service. How can I help you today?`,
+          text: `<b>Welcome to the Amazing World of Pranic Healing!</b>
+                  <p>I'm your ChatBot, here to guide you and provide any information you need about Pranic Healing. Whether you're curious about the basics, seeking deeper insights, or have specific questions, I'm here to assist you every step of the way.</p>`,
+          value: `Welcome to the Amazing World of Pranic Healing!
+                  I'm your ChatBot, here to guide you and provide any information you need about Pranic Healing. Whether you're curious about the basics, seeking deeper insights, or have specific questions, I'm here to assist you every step of the way.`,
         },
         false
       );
@@ -269,9 +271,7 @@ const Maximized = ({
   }
 
   return (
-    <div
-    className="main-container"
-    >
+    <div className="main-container">
       <TitleBar
         style={{ padding: "10px 12px 0 12px" }}
         leftIcons={[<div></div>]}
@@ -284,12 +284,12 @@ const Maximized = ({
             <IconButton
               key="minimize"
               onClick={() => {
-                if ('parentIFrame' in window) {
+                if ("parentIFrame" in window) {
                   window.parentIFrame.getPageInfo((obj) => {
                     window.parentIFrame.size(105, 140);
                   });
                 }
-                minimize()
+                minimize();
               }}
               style={{
                 display: "flex",
@@ -311,11 +311,11 @@ const Maximized = ({
               key="close"
               onClick={() => {
                 handleClose();
-                  if ('parentIFrame' in window) {
-                    window.parentIFrame.getPageInfo((obj) => {
-                      window.parentIFrame.size(105, 140);
-                    });
-                  }
+                if ("parentIFrame" in window) {
+                  window.parentIFrame.getPageInfo((obj) => {
+                    window.parentIFrame.size(105, 140);
+                  });
+                }
                 minimize();
               }}
               style={{
@@ -342,7 +342,7 @@ const Maximized = ({
           marginBottom: "5px",
         }}
       >
-        <img src={logo} alt="logo" width="85" height="85" />
+        <img src="/pranic-healing-logo.png" alt="logo" width="140" height="85" />
       </div>
 
       <div
@@ -389,7 +389,7 @@ const Maximized = ({
                       {!message.isOwn && (
                         <div>
                           <img
-                            src={agentIcon}
+                            src="/logo-square.png"
                             alt="logo"
                             width="25"
                             height="35"
