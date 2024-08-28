@@ -257,7 +257,7 @@ class App extends React.Component {
     let mesg = {};
     try {
       const response = await axios.post(
-        "https://prach-mortgage.onrender.com/api/get-answer",
+        " http://127.0.0.1:5001/api/get-answer",
         {
           question: inputMessage
         },
@@ -268,10 +268,13 @@ class App extends React.Component {
         }
       );
       let result = response.data.answer;
+      let sources = response.data.citation.map(c=>c.source)
+      console.log(sources)
       if (result) {
         const { messages } = this.state;
         mesg = {
           message: this.filterAnswer(result, response).formattedText,
+          sources: sources,
           isOwn: false,
           messageDate: new Date(),
           id: this.filterAnswer(result, response).id,

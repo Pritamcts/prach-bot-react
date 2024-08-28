@@ -417,9 +417,18 @@ const Maximized = ({
                                   obj={getAnswerObj(message.id)}
                                 />
                               ) : (
+                                <>
                                 <Markdown rehypePlugins={[rehypeRaw]}>
                                   {message.message}
+                                  
                                 </Markdown>
+                                
+                                {!!message.sources && message.sources.length > 0 && (<>
+                                  {message.sources.map((source,index) => (
+                                    <span key={index}>{source}</span>
+                                    
+                                  ))}
+                                  </>)}</>
                               )}
                             </>
                           )}
