@@ -253,6 +253,7 @@ class App extends React.Component {
     }
   };
 
+  // new state
   fetchData = async (inputMessage) => {
     let mesg = {};
     try {
