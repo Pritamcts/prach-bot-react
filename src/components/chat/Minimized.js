@@ -64,7 +64,7 @@ const Minimized = ({ maximize }) => {
 	>
 		<IconButton style={{background: '#0092bd', borderRadius: '50%', border: '2px solid #80c466'}}>
 			{/* <ChatIcon /> */}
-			<img src={widgetIcon} alt="chatbot" width='60' height='60' tabIndex="0" />
+			<img src={widgetIcon} alt="chatbot" width='50' height='50' tabIndex="0" />
 		</IconButton>
 	</div>
 	)
