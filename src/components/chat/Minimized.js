@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { isMobile, isIOS } from 'react-device-detect';
 import { IconButton, ChatIcon } from '@livechat/ui-kit'
-import widgetIcon from '../../images/logo.svg'
+import widgetIcon from '../../images/chatIcon.png'
 
 const Minimized = ({ maximize }) => {
 
@@ -21,7 +21,6 @@ const Minimized = ({ maximize }) => {
 	  };
 	  const chatIconClicked = () => {
 		if (typeof window !== 'undefined') {
-			console.log('window.parentIFrame===>', window.parentIFrame);
 		  if (window.parentIFrame) {
 			window.parentIFrame.getPageInfo((obj) => {
 			  const winHeight = (obj.windowHeight * 99) / 100;
@@ -63,9 +62,9 @@ const Minimized = ({ maximize }) => {
 			cursor: 'pointer',
 		}}
 	>
-		<IconButton>
+		<IconButton style={{background: '#0092bd', borderRadius: '50%', border: '2px solid #80c466'}}>
 			{/* <ChatIcon /> */}
-			<img src="/logo-square.png" alt="chatbot" width='70' height='70' tabIndex="0" />
+			<img src={widgetIcon} alt="chatbot" width='60' height='60' tabIndex="0" />
 		</IconButton>
 	</div>
 	)

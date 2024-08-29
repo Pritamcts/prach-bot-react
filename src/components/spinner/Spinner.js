@@ -3,6 +3,10 @@ import React from 'react';
 import "./Spinner.css";
 
 const Spinner = () => {
+    const messageContainer = document.getElementById('messageContainer');
+  if (messageContainer) {
+    messageContainer.scrollTop = messageContainer.scrollHeight - messageContainer.clientHeight;
+  }
     return (
         <div className="loader">
             <div className={`circle circle1`}></div>

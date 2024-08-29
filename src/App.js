@@ -2,6 +2,7 @@ import * as React from "react";
 import axios from "axios";
 import Maximized from "../src/components/chat/Maximized";
 import Minimized from "../src/components/chat/Minimized";
+import {focusInChat} from './components/services/utils';
 import { ThemeProvider, FixedWrapper, defaultTheme } from "@livechat/ui-kit";
 import { isMobile, isAndroid, isIOS, isWindows } from 'react-device-detect';
 
@@ -169,7 +170,6 @@ class App extends React.Component {
   // }
 
   filterAnswer = (result, response) => {
-    console.log(result);
     if (result) {
       let outputString = result.replace(/\n/g, " <br/>");
       // Define the regular expression to match the pattern
@@ -253,12 +253,11 @@ class App extends React.Component {
     }
   };
 
-  // new state
   fetchData = async (inputMessage) => {
     let mesg = {};
     try {
       const response = await axios.post(
-        "https://prach-mortgage.onrender.com/api/get-answer",
+        "http://34.225.123.149:5001/api/get-answer",
         {
           question: inputMessage
         },
@@ -270,7 +269,6 @@ class App extends React.Component {
       );
       let result = response.data.answer;
       let sources = response.data.citation.map(c=>c.source)
-      console.log(sources)
       if (result) {
         const { messages } = this.state;
         mesg = {
@@ -296,13 +294,38 @@ class App extends React.Component {
           this.setState(
             { messages: newMessages, isEncryptionNeeded: false },
             () => {
-              // focusInChatbot();
+              focusInChat();
             }
           );
         }, 100);
       }
     } catch (error) {
       // Handle error
+      const { messages } = this.state;
+      mesg = {
+        message: 'Opps something went wrong, please try again.',
+        isOwn: false,
+        messageDate: new Date(),
+      };
+      const oldMessages = [...messages];
+        if (
+          oldMessages[oldMessages.length - 1].message === ""
+        ) {
+          oldMessages.splice(-1, 1);
+        }
+        const newMessages = oldMessages;
+        if (Object.keys(mesg).length !== 0) {
+          newMessages.push(mesg);
+        }
+
+        setTimeout(() => {
+          this.setState(
+            { messages: newMessages, isEncryptionNeeded: false },
+            () => {
+              focusInChat();
+            }
+          );
+        }, 100);
       console.error(error);
     }
   };

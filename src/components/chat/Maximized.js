@@ -3,6 +3,7 @@ import happy from "../../images/icons-happy.png";
 import logo from "../../images/logo.svg";
 import agentIcon from "../../images/logo-without-name.svg";
 import plus from "../../images/plus-icon.png";
+import mic from "../../images/mic.png";
 import { FaWindowMinimize } from "react-icons/fa6";
 import moment from "moment";
 import Markdown from "react-markdown";
@@ -48,6 +49,8 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 
+const globalColor = '#0092bd';
+
 // import logo from '../../logo.png';
 
 let textRef = React.createRef();
@@ -86,7 +89,7 @@ const Maximized = ({
     if (messages.length === 0) {
       handleMessage(
         {
-          text: `<b>Welcome to the Amazing World of Pranic Healing!</b>
+          text: `<b>Welcome to the Amazing World of Pranic Healing!</b><br />
                   <p>I'm your ChatBot, here to guide you and provide any information you need about Pranic Healing. Whether you're curious about the basics, seeking deeper insights, or have specific questions, I'm here to assist you every step of the way.</p>`,
           value: `Welcome to the Amazing World of Pranic Healing!
                   I'm your ChatBot, here to guide you and provide any information you need about Pranic Healing. Whether you're curious about the basics, seeking deeper insights, or have specific questions, I'm here to assist you every step of the way.`,
@@ -179,8 +182,14 @@ const Maximized = ({
   const handleKeyDown = (event) => {
     if (event.keyCode === 13) {
       event.preventDefault();
+      const messageContainer = document.getElementById('messageContainer');
+      if (messageContainer) {
+        messageContainer.scrollTop =
+          messageContainer.scrollHeight - messageContainer.clientHeight;
+      }
       const messageText = event.target.value;
-      if (messageText !== "") {
+      if (messageText !== "" && messages && messages[messages.length - 1]?.message !== "") {
+
         handleMessage({ text: messageText, value: messageText }, true);
         setMessage("");
       }
@@ -189,7 +198,13 @@ const Maximized = ({
   };
 
   const handleSendButtonClick = () => {
-    if (message !== "") {
+    if (message !== "" && messages && messages[messages.length - 1]?.message !== "") {
+
+      const messageContainer = document.getElementById('messageContainer');
+        if (messageContainer) {
+          messageContainer.scrollTop =
+            messageContainer.scrollHeight - messageContainer.clientHeight;
+        }
       handleMessage({ text: message, value: message }, true);
       setMessage("");
     }
@@ -298,7 +313,7 @@ const Maximized = ({
                 paddingRight: "15px",
               }}
             >
-              <FaWindowMinimize color={"#2b4c87"} />
+              <FaWindowMinimize color={globalColor} />
               {/* <i
                     class='material-icons'
                     style={{
@@ -324,10 +339,10 @@ const Maximized = ({
             >
               <CloseIcon
                 className="svg-custom"
-                color="#2b4c87"
+                color={globalColor}
                 style={{
-                  width: "20px",
-                  height: "20px",
+                  width: "24px",
+                  height: "22px",
                 }}
               />
             </IconButton>
@@ -342,7 +357,7 @@ const Maximized = ({
           marginBottom: "5px",
         }}
       >
-        <img src="/pranic-healing-logo.png" alt="logo" width="140" height="85" />
+        <img src="/pranic-healing-logo.png" alt="logo" width="140" height="60" />
       </div>
 
       <div
@@ -371,6 +386,8 @@ const Maximized = ({
             background: "#fff",
             padding: "0",
           }}
+
+          id="messageContainer"
         >
           {messages.length > 0 && (
             <MessageGroup
@@ -391,8 +408,13 @@ const Maximized = ({
                           <img
                             src="/logo-square.png"
                             alt="logo"
-                            width="25"
-                            height="35"
+                            width="30"
+                            height="30"
+                            style={{
+                              border: '2px solid #0092bd',
+                              borderRadius: '50%',
+                              padding: '2px'
+                            }}
                           />
                         </div>
                       )}
@@ -424,9 +446,12 @@ const Maximized = ({
                                 </Markdown>
                                 
                                 {!!message.sources && message.sources.length > 0 && (<>
+                                <br />
                                   {message.sources.map((source,index) => (
-                                    <span key={index}>{source}</span>
-                                    
+                                    <>
+                                    <a className="sources-link" href={source} target="_blank">{source}</a>
+                                    <br />
+                                    </>
                                   ))}
                                   </>)}</>
                               )}
@@ -514,16 +539,17 @@ const Maximized = ({
                   SpeechRecognition.startListening({ continuous: true })
                 }
               >
-                <RiVoiceprintLine size="25px" color="black" />
+                <RiVoiceprintLine size="25px" style={{color: '#000', opacity: '0.7'}} />
+                {/* <img src={mic} alt="mic icon" /> */}
               </IconButton>
             )}
             <IconButton
               fit
-              disabled={isDisabled}
-              style={!message ? { cursor: "none", opacity: "0.5" } : {}}
+              disabled={isDisabled && messages && messages[messages.length - 1]?.message === ""}
+              style={!message ? { cursor: "none", opacity: "0.3" } : messages && messages[messages.length - 1]?.message === "" ? { cursor: "none", opacity: "0.3" } : {}}
             >
               <SendIcon
-                color="#2b4c87"
+                color={globalColor}
                 style={{
                   width: "18px",
                   height: "16px",
