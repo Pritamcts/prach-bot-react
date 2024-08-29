@@ -257,7 +257,7 @@ class App extends React.Component {
     let mesg = {};
     try {
       const response = await axios.post(
-        "http://34.225.123.149:5001/api/get-answer",
+        "https://prach-mortgage.onrender.com/api/get-answer",
         {
           question: inputMessage
         },
